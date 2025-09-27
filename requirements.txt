@@ -1,0 +1,7 @@
+pandas
+networkx
+python-louvain
+scikit-learn
+xgboost
+matplotlib
+seaborn
