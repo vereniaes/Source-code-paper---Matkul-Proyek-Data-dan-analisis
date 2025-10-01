@@ -21,6 +21,20 @@ Proyek ini secara langsung berkontribusi pada Target 16.10: Menjamin akses publi
 - **Memperkuat Kepercayaan:** Mengembalikan kepercayaan masyarakat terhadap informasi yang otentik.
 
 ---
+## Hasil Utama & Visualisasi
+Pipeline ini berhasil mengidentifikasi dan memvisualisasikan pola perilaku anomali dalam jaringan.
+
+**Peta Jaringan Interaksi**
+Visualisasi ini memetakan seluruh jaringan interaksi. Ukuran titik merepresentasikan pengaruh akun (PageRank), sementara warna merepresentasikan komunitas (klaster) yang terdeteksi oleh Algoritma Louvain.
+
+<img width="1570" height="1591" alt="image" src="https://github.com/user-attachments/assets/f2e8b2d7-1ac2-4428-a5a4-07dde8775851" />
+
+
+Profil Perbandingan "Sidik Jari" Buzzer
+Radar chart ini secara jelas menunjukkan perbedaan karakteristik antara akun yang diprediksi sebagai buzzer (merah) dengan pengguna biasa (hijau). Terlihat jelas bahwa akun buzzer memiliki skor tinggi pada `out_degree` (aktivitas menyebar) dan `narrative_similarity` (narasi seragam), namun rendah pada metrik interaksi organik.
+
+<img width="881" height="742" alt="image" src="https://github.com/user-attachments/assets/036665a0-8ab8-4224-9287-b323e91bc24e" />
+
 
 ## ⚙️ Metodologi & Pipeline Proyek
 
@@ -79,6 +93,16 @@ Pendekatan utama proyek ini adalah fusi fitur multi-dimensi. Kami tidak hanya me
 - Melatih model XGBoost Classifier dengan parameter `scale_pos_weight` untuk menangani ketidakseimbangan kelas.
 - Mengevaluasi model menggunakan metrik yang relevan: Confusion Matrix, Classification Report (Recall, F1-Score), dan Precision-Recall Curve (AUC-PR).
 
+### 6. `phase6_inference_and_analysis.ipynb`
+
+**Tujuan:** Menggunakan model terlatih untuk inferensi dan interpretasi hasil.
+
+**Proses:**
+
+- Melatih ulang model pada 100% data untuk mendapatkan prediksi terbaik.
+- Mengurutkan semua akun berdasarkan probabilitas sebagai buzzer.
+- Menganalisis dan memvisualisasikan karakteristik akun yang terprediksi sebagai buzzer.
+
 ---
 
 ## 🛠️ Algoritma & Teknologi yang Digunakan
@@ -124,3 +148,10 @@ Jalankan file Jupyter Notebook secara berurutan, karena output dari satu phase a
 3. `phase3_feature_engineering.ipynb`
 4. `phase4_heuristic_labeling.ipynb`
 5. `phase5_model_training.ipynb`
+6. `phase6_inference_dan_analysis.ipynb`
+
+### **Kesimpulan Proyek**
+Proyek ini berhasil membangun sebuah prototipe end-to-end yang fungsional untuk mendeteksi akun anomali. Poin-poin utamanya adalah:
+- Metodologi Valid: Fusi fitur dari domain jaringan, konten, dan perilaku terbukti efektif.
+- Tantangan Utama: Kualitas model sangat bergantung pada kuantitas dan kualitas data berlabel. Kurangnya sampel positif (is_buzzer=1) adalah batasan terbesar.
+- Arah Pengembangan: Langkah selanjutnya adalah menerapkan pendekatan human-in-the-loop, di mana hasil prediksi model digunakan untuk membantu investigator manusia melakukan pelabelan lebih lanjut, yang kemudian dapat digunakan untuk melatih ulang model yang lebih kuat.
