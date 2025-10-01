@@ -134,8 +134,8 @@ Untuk mereplikasi hasil dari proyek ini, ikuti langkah-langkah berikut:
 Clone repositori ini dan instal semua library yang dibutuhkan. Disarankan untuk menggunakan virtual environment.
 
 ```bash
-git clone https://github.com/[Your-Username]/[Your-Repo-Name].git
-cd [Your-Repo-Name]
+git clone git@github.com:vereniaes/Source-code-paper---Matkul-Proyek-Data-dan-analisis.git
+cd Source-code-paper---Matkul-Proyek-Data-dan-analisis
 pip install -r requirements.txt
 ```
 
